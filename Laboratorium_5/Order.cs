@@ -19,6 +19,7 @@ namespace Laboratorium_5
             this.kitAmount = kitAmount;
             this.kitPrice = kitPrice;
         }
+
         public double getFinalPrice
         {
             get

@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:Laboratorium_5"
         mc:Ignorable="d" FontSize="18" 
         WindowStartupLocation="CenterScreen" 
@@ -45,13 +44,47 @@
             <Grid Grid.Row="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="2*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
+                    <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="0" Grid.Column="1">
+                        <StackPanel Orientation="Vertical">
+                            <Border BorderThickness="0.5" BorderBrush="Black">
+                                <TextBlock VerticalAlignment="Center" TextAlignment="Center"
+                                           Text="Additional options" 
+                                           FontSize="15" Background="#FFC4E3FF"/>
+                            </Border>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:Name="helmetConstantText" TextAlignment="Left" 
+                                           VerticalAlignment="Center"
+                                           FontSize="12" Text="add helmet:" Height="20"/>
+                                <TextBlock x:Name="txt_addHelmet"          
+                                           Text="{Binding ElementName=cmbx_addHelmet,Path=SelectedItem}"/>
+                            </StackPanel>
+                            <ComboBox x:Name="cmbx_addHelmet" VerticalAlignment="Center"
+                                      Height="{Binding ElementName=helmetConstantText, Path=Height}">
+                                <!--DisplayMemberPath="brushCollection"
+                                      SelectedValuePath="choiceCollection"
+                                      SelectedValue="{Binding choiceCollection}"-->
+                                <ComboBoxItem>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Ellipse Width="9" Height="9" Fill="Green"/>
+                                        <TextBlock x:Name="yestxt" FontSize="12" Text="Yes"/>
+                                    </StackPanel>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Ellipse Width="9" Height="9" Fill="Red"/>
+                                        <TextBlock FontSize="12" Text="No"/>
+                                    </StackPanel>
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </StackPanel>
+                    </Border>
                     <Calendar x:Name="orderDate" IsTodayHighlighted="True" 
                               SelectedDatesChanged="orderDate_SelectedDatesChanged"/>
                     <TextBlock Margin="10" Grid.Row="1" 
@@ -100,6 +133,7 @@
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+
                 <Grid Grid.Column="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -114,6 +148,7 @@
                     <Border Grid.Column="1" BorderThickness="0.5"
                             BorderBrush="Black" HorizontalAlignment="Right"/>
                 </Grid>
+
                 <Grid Grid.Column="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -128,34 +163,18 @@
                     <Border Grid.Column="1" BorderThickness="0.5"
                             BorderBrush="Black" HorizontalAlignment="Right"/>
                 </Grid>
+
                 <Grid Grid.Column="2">
                     <Button x:Name="btn_add" Content="Add" FontSize="13" BorderThickness ="0"
                             Click="btn_add_Click" Background="#FFF0F0F0"/>
                 </Grid>
             </Grid>
 
-
             <Border Grid.Row="1" BorderThickness="0.5" BorderBrush="Black"
                     VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
             <Border Grid.Row="1" BorderThickness="0.5" BorderBrush="Black"
                     VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
-
         </Grid>
         <Border Grid.Column="2" BorderThickness="1" BorderBrush="Black"/>
-        <!--<StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="3" 
-                    Orientation="Vertical">
-            <StackPanel Orientation="Horizontal" Height="40">
-                <TextBlock Text="Name:" FontSize="32"/>
-                <TextBox x:Name="txt_Name" Width="100"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Height="40">
-                <TextBlock Text="Surname:" FontSize="32"/>
-                <TextBox x:Name="txt_Surname" Width="100"/>
-            </StackPanel>
-        </StackPanel>-->
-
-        <!--<Button x:Name="btn_sayHello" Grid.Column="5" Grid.Row="5" Content="Press me"
-                FontSize="20" BorderBrush="Violet" Margin="5" 
-                BorderThickness="2" Background="#FFECECEC" Click="btn_sayHello_Click"/>-->
     </Grid>
 </Window>

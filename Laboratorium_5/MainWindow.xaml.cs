@@ -25,7 +25,12 @@ namespace Laboratorium_5
             InitializeComponent();
             lstbx_people.Items.Add(new Person("Kate", "Smit", 10));
             lstbx_people.Items.Add(new Person("John", "Boyka", 10));
+
+
+            DataContext = new ComboboxViewModel();
         }
+
+
 
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
