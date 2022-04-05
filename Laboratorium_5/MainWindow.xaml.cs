@@ -23,20 +23,31 @@ namespace Laboratorium_5
         public MainWindow()
         {
             InitializeComponent();
-            txt_name.Text = null;
-            txt_surname.Text = null;
-            lstbx_people.Items.Add(new Person("Kate", "Smit" ));
-            lstbx_people.Items.Add(new Person("John", "Boyka"));
+            lstbx_people.Items.Add(new Person("Kate", "Smit", 10));
+            lstbx_people.Items.Add(new Person("John", "Boyka", 10));
         }
 
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
-            try
+            int a = 0, b = 1;
+            if(a < b){
+                orderDate.DisplayDate = DateTime.Today.AddDays(-13);
+            }
+            if (txt_name.Text == "" || txt_surname.Text == "" || txt_kitAmount.Text == "")
             {
-                Person person = new Person(txt_name.Text, txt_surname.Text);
+                MessageBox.Show("Missing data!");
+            }
+            else
+            {
+                Order order = new Order(Math.Round(Convert.ToDouble(priceSlider.Value), 1), Convert.ToInt32(txt_kitAmount.Text));
+                Person person = new Person(txt_name.Text, txt_surname.Text, order.getFinalPrice);
                 lstbx_people.Items.Add(person);
             }
-            catch (FormatException)
+        }
+
+        private void orderDate_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(orderDate.DisplayDate < DateTime.Today)
             {
                 MessageBox.Show("Mistakes in the entered information!");
             }

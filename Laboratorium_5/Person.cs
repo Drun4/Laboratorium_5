@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 
 namespace Laboratorium_5
 {
-    public class Person : Order
+    public class Person
     {
         public string name { get; set; }
         public string surname { get; set; }
-       // public double price { get; set; }
+        public double price { get; set; }
 
-        public Person(string name, string surname)
+        // public double price { get; set; }
+
+        public Person(string name, string surname, double price)
         {
             this.name = name;
             this.surname = surname;
+            this.price = price;
             //this.price = price;
         }
 
@@ -23,7 +26,7 @@ namespace Laboratorium_5
         {
             get
             {
-                return $"{name} {surname} -> $";
+                return $"{name} {surname} -> {price}$";
             }
         }
     }
