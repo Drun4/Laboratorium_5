@@ -26,7 +26,7 @@ namespace Laboratorium_5
         {
             get
             {
-                return $"{name} {surname} -> {price}$";
+                return $"{name} {surname} -> {price:0.0}$";
             }
         }
     }

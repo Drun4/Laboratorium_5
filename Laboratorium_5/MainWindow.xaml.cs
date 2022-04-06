@@ -20,33 +20,48 @@ namespace Laboratorium_5
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<double> sliderValues = new List<double>();
+        List<int> kitValues = new List<int>();
+
+        List<int> firstComboboxIndexes = new List<int>();
+        List<int> secondComboboxIndexes = new List<int>();
+        List<int> thirdComboboxIndexes = new List<int>();
+
         public MainWindow()
         {
             InitializeComponent();
-            lstbx_people.Items.Add(new Person("Kate", "Smit", 10));
-            lstbx_people.Items.Add(new Person("John", "Boyka", 10));
-
-
             DataContext = new ComboboxViewModel();
         }
 
-
-
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
-            int a = 0, b = 1;
-            if(a < b){
-                orderDate.DisplayDate = DateTime.Today.AddDays(-13);
-            }
+            //int a = 0, b = 1;
+            //if(a < b){
+            //    orderDate.DisplayDate = DateTime.Today.AddDays(-13);
+            //}
             if (txt_name.Text == "" || txt_surname.Text == "" || txt_kitAmount.Text == "")
             {
                 MessageBox.Show("Missing data!");
             }
             else
             {
-                Order order = new Order(Math.Round(Convert.ToDouble(priceSlider.Value), 1), Convert.ToInt32(txt_kitAmount.Text));
-                Person person = new Person(txt_name.Text, txt_surname.Text, order.getFinalPrice);
-                lstbx_people.Items.Add(person);
+                try
+                {
+                    Order order = new Order(Math.Round(Convert.ToDouble(slider_kitPrice.Value), 1), Convert.ToInt32(txt_kitAmount.Text));
+                    Person person = new Person(txt_name.Text, txt_surname.Text, order.getFinalPrice);
+
+                    lstbx_people.Items.Add(person);
+                    kitValues.Add(order.kitAmount);
+                    sliderValues.Add(order.kitPrice);
+
+                    firstComboboxIndexes.Add(cmbx_addHelmet.SelectedIndex);
+                    secondComboboxIndexes.Add(cmbx_addGoggle.SelectedIndex);
+                    thirdComboboxIndexes.Add(cmbx_addSki.SelectedIndex);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Format error!");
+                }
             }
         }
 
@@ -57,5 +72,25 @@ namespace Laboratorium_5
                 MessageBox.Show("Mistakes in the entered information!");
             }
         }
+
+        private void lstbx_people_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int personIndex = lstbx_people.SelectedIndex;
+
+            Person tempPerson = (Person)lstbx_people.Items[personIndex];
+            txt_name.Text = tempPerson.name;
+            txt_surname.Text = tempPerson.surname;
+            txt_kitAmount.Text = Convert.ToString(kitValues[personIndex]);
+            slider_kitPrice.Value = sliderValues[personIndex];
+
+            cmbx_addHelmet.SelectedIndex = firstComboboxIndexes[personIndex];
+            cmbx_addGoggle.SelectedIndex = secondComboboxIndexes[personIndex];
+            cmbx_addSki.SelectedIndex = thirdComboboxIndexes[personIndex];
+        }
+
+        //private void cmbx_addHelmet_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    txt_addHelmet.Text += ;
+        //}
     }
 }

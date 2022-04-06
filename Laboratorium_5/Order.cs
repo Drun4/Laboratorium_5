@@ -9,7 +9,8 @@ namespace Laboratorium_5
     public class Order
     {
         public double kitPrice { get; set; }
-        public double kitAmount { get; set; }
+        public int kitAmount { get; set; }
+
         public double helmetPrice { get; set; }
         public double gogglesPrice { get; set; }
         public double skipolesPrice { get; set; }
