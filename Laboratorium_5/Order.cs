@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Laboratorium_5
+﻿namespace Laboratorium_5
 {
     public class Order
     {
@@ -13,19 +7,22 @@ namespace Laboratorium_5
 
         public double helmetPrice { get; set; }
         public double gogglesPrice { get; set; }
-        public double skipolesPrice { get; set; }
+        public double skiPolesPrice { get; set; }
 
-        public Order(double kitPrice, int kitAmount)
+        public Order(double kitPrice, int kitAmount, double helmetPrice, double gogglesPrice, double skiPolesPrice)
         {
             this.kitAmount = kitAmount;
             this.kitPrice = kitPrice;
+            this.helmetPrice = helmetPrice;
+            this.gogglesPrice = gogglesPrice;
+            this.skiPolesPrice = skiPolesPrice;
         }
 
         public double getFinalPrice
         {
             get
             {
-                return kitAmount * (kitPrice + helmetPrice + gogglesPrice + skipolesPrice);
+                return kitAmount * (kitPrice + helmetPrice + gogglesPrice + skiPolesPrice);
             }
         }
     }

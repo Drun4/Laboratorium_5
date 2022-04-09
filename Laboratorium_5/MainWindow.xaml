@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Laboratorium_5"
         mc:Ignorable="d" FontSize="18" 
         WindowStartupLocation="CenterScreen" 
-        Title="Ski equipment rental" Height="450" Width="800" Background="#FFD4F9FF">
+        Title="Ski equipment rental" Height="450" Width="850" Background="#FFD4F9FF"
+        MinHeight="400" MinWidth="800">
     <Grid Margin="20">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
@@ -23,7 +24,7 @@
             <Grid Grid.Column="1" Grid.Row="0" Background="#FFF0F0F0"/>
             <Border BorderThickness="1" BorderBrush="Black">
                 <TextBlock Grid.Row="0" Text="Person list"
-                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
             <ListBox x:Name="lstbx_people" Grid.Row="1" FontSize="14" Margin="10" 
                      SelectionChanged="lstbx_people_SelectionChanged">
@@ -71,11 +72,12 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" TextAlignment="Left" 
-                                        VerticalAlignment="Center" Margin="5,0,0,0"
-                                        FontSize="12" Text="Add helmet" Height="20"/>
+                                           VerticalAlignment="Center" Margin="5,0,0,0"
+                                           FontSize="12" Text="Add helmet" Height="20"/>
                                 <!--Text="{Binding ElementName=cmbx_addHelmet,Path=SelectedItem}"-->
-                                <ComboBox x:Name="cmbx_addHelmet" Grid.Column="1" VerticalAlignment="Center"
-                                          Margin="10,10,5,10" SelectedIndex="1">
+                                <ComboBox x:Name="cmbx_addHelmet" Grid.Column="1" 
+                                          VerticalAlignment="Center" Margin="10,10,5,10"
+                                          SelectedIndex="1">
                                     <!--ItemsSource="{Binding choiceCollection}"-->
                                     <ComboBoxItem>
                                         <StackPanel Orientation="Horizontal">
@@ -97,11 +99,13 @@
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock x:Name="goggleConstantText" Grid.Column="0" TextAlignment="Left" 
-                                            VerticalAlignment="Center" Margin="5,0,0,0"
-                                            FontSize="12" Text="Add goggle" Height="20"/>
-                                    <ComboBox x:Name="cmbx_addGoggle" Grid.Column="1" VerticalAlignment="Center"
-                                                Margin="10,10,5,10" SelectedIndex="1">
+                                    <TextBlock x:Name="goggleConstantText" Grid.Column="0" 
+                                               TextAlignment="Left" VerticalAlignment="Center" 
+                                               Margin="5,0,0,0" FontSize="12" 
+                                               Text="Add goggle" Height="20"/>
+                                    <ComboBox x:Name="cmbx_addGoggle" Grid.Column="1" 
+                                              VerticalAlignment="Center" Margin="10,10,5,10" 
+                                              SelectedIndex="1">
                                         <ComboBoxItem>
                                             <StackPanel Orientation="Horizontal">
                                                 <Ellipse Width="8" Height="8" Fill="Green"/>
@@ -122,11 +126,13 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock x:Name="skiConstantText" Grid.Column="0" TextAlignment="Left" 
-                                        VerticalAlignment="Center" Margin="5,0,0,0"
-                                        FontSize="12" Text="Add ski" Height="20"/>
-                                <ComboBox x:Name="cmbx_addSki" Grid.Column="1" VerticalAlignment="Center"
-                                          Margin="10,10,5,10" SelectedIndex="1">
+                                <TextBlock x:Name="skiConstantText" Grid.Column="0" 
+                                           TextAlignment="Left" VerticalAlignment="Center" 
+                                           Margin="5,0,0,0" FontSize="12" 
+                                           Text="Add ski" Height="20"/>
+                                <ComboBox x:Name="cmbx_addSki" Grid.Column="1"
+                                          VerticalAlignment="Center" Margin="10,10,5,10" 
+                                          SelectedIndex="1">
                                     <ComboBoxItem>
                                         <StackPanel Orientation="Horizontal">
                                             <Ellipse Width="8" Height="8" Fill="Green"/>
@@ -180,8 +186,8 @@
                              Text="{Binding ElementName=slider_kitPrice, Path=Value, 
                              StringFormat={}{0:0.0}}"/>
                 </Grid>
-                <Slider x:Name="slider_kitPrice" Grid.Column="2" VerticalAlignment="Center" Minimum="20" 
-                        Maximum="50" Value="35" Cursor="Hand" TickPlacement="None" 
+                <Slider x:Name="slider_kitPrice" Grid.Column="2" VerticalAlignment="Center"
+                        Minimum="20" Maximum="50" Value="35" Cursor="Hand" TickPlacement="None" 
                         SmallChange="0.1" LargeChange="1" Ticks="1"/>
             </Grid>
 

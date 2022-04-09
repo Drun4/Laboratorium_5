@@ -20,8 +20,14 @@ namespace Laboratorium_5
     /// </summary>
     public partial class MainWindow : Window
     {
+        const double addElementPrice = 2;
+
+        double _helmetPrice;
+        double _gogglesPrice;
+        double _skiPolesPrice;
+
         List<double> sliderValues = new List<double>();
-        List<int> kitValues = new List<int>();
+        List<int> kitAmount = new List<int>();
 
         List<int> firstComboboxIndexes = new List<int>();
         List<int> secondComboboxIndexes = new List<int>();
@@ -47,11 +53,36 @@ namespace Laboratorium_5
             {
                 try
                 {
-                    Order order = new Order(Math.Round(Convert.ToDouble(slider_kitPrice.Value), 1), Convert.ToInt32(txt_kitAmount.Text));
+                    if(cmbx_addHelmet.SelectedIndex == 0)
+                    {
+                        _helmetPrice = addElementPrice;
+                    }
+                    else
+                    {
+                        _helmetPrice = 0;
+                    }
+                    if (cmbx_addGoggle.SelectedIndex == 0)
+                    {
+                        _gogglesPrice = addElementPrice;
+                    }
+                    else
+                    {
+                        _gogglesPrice = 0;
+                    }
+                    if (cmbx_addSki.SelectedIndex == 0)
+                    {
+                        _skiPolesPrice = addElementPrice;
+                    }
+                    else
+                    {
+                        _skiPolesPrice = 0;
+                    }
+                    Order order = new Order(Math.Round(Convert.ToDouble(slider_kitPrice.Value), 1),
+                                            Convert.ToInt32(txt_kitAmount.Text), _helmetPrice, _gogglesPrice, _skiPolesPrice);
                     Person person = new Person(txt_name.Text, txt_surname.Text, order.getFinalPrice);
 
                     lstbx_people.Items.Add(person);
-                    kitValues.Add(order.kitAmount);
+                    kitAmount.Add(order.kitAmount);
                     sliderValues.Add(order.kitPrice);
 
                     firstComboboxIndexes.Add(cmbx_addHelmet.SelectedIndex);
@@ -80,17 +111,12 @@ namespace Laboratorium_5
             Person tempPerson = (Person)lstbx_people.Items[personIndex];
             txt_name.Text = tempPerson.name;
             txt_surname.Text = tempPerson.surname;
-            txt_kitAmount.Text = Convert.ToString(kitValues[personIndex]);
+            txt_kitAmount.Text = Convert.ToString(kitAmount[personIndex]);
             slider_kitPrice.Value = sliderValues[personIndex];
 
             cmbx_addHelmet.SelectedIndex = firstComboboxIndexes[personIndex];
             cmbx_addGoggle.SelectedIndex = secondComboboxIndexes[personIndex];
             cmbx_addSki.SelectedIndex = thirdComboboxIndexes[personIndex];
         }
-
-        //private void cmbx_addHelmet_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    txt_addHelmet.Text += ;
-        //}
     }
 }
