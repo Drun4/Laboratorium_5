@@ -20,6 +20,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="12*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Column="1" Grid.Row="0" Background="#FFF0F0F0"/>
             <Border BorderThickness="1" BorderBrush="Black">
@@ -27,132 +28,141 @@
                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Border>
             <ListBox x:Name="lstbx_people" Grid.Row="1" FontSize="14" Margin="10" 
-                     SelectionChanged="lstbx_people_SelectionChanged">
+                       SelectionChanged="lstbx_people_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding FullInfo}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <Button x:Name="btn_removeSelected" Grid.Row="2" FontSize="14" Content="Remove selected" 
+                    Background ="#FFFFCECE" Click="btn_removeSelected_Click"/>
         </Grid>
 
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="18*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="0" Grid.Column="1">
-                        <Grid Grid.Column="1" Grid.Row="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Border Grid.Row="0" BorderThickness="0.5" BorderBrush="Black">
-                                <TextBlock VerticalAlignment="Center" TextAlignment="Center"
-                                           Text="Additional options" 
-                                           FontSize="15" Background="#FFC4E3FF"/>
-                            </Border>
-                            <Grid Grid.Row="1" VerticalAlignment="Center">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" TextAlignment="Left" 
-                                           VerticalAlignment="Center" Margin="5,0,0,0"
-                                           FontSize="12" Text="Add helmet" Height="20"/>
-                                <!--Text="{Binding ElementName=cmbx_addHelmet,Path=SelectedItem}"-->
-                                <ComboBox x:Name="cmbx_addHelmet" Grid.Column="1" 
-                                          VerticalAlignment="Center" Margin="10,10,5,10"
-                                          SelectedIndex="1">
-                                    <!--ItemsSource="{Binding choiceCollection}"-->
-                                    <ComboBoxItem>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Ellipse Width="8" Height="8" Fill="Green"/>
-                                            <TextBlock FontSize="12" Text="Yes"/>
-                                        </StackPanel>
-                                    </ComboBoxItem>
-                                    <ComboBoxItem>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Ellipse Width="8" Height="8" Fill="Red"/>
-                                            <TextBlock FontSize="12" Text="No"/>
-                                        </StackPanel>
-                                    </ComboBoxItem>
-                                </ComboBox>
-                            </Grid>
-                            <Border Grid.Row="2" BorderThickness="0.2" BorderBrush="Black">
-                                <Grid Grid.Row="2" VerticalAlignment="Center">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock x:Name="goggleConstantText" Grid.Column="0" 
-                                               TextAlignment="Left" VerticalAlignment="Center" 
-                                               Margin="5,0,0,0" FontSize="12" 
-                                               Text="Add goggle" Height="20"/>
-                                    <ComboBox x:Name="cmbx_addGoggle" Grid.Column="1" 
-                                              VerticalAlignment="Center" Margin="10,10,5,10" 
-                                              SelectedIndex="1">
-                                        <ComboBoxItem>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Ellipse Width="8" Height="8" Fill="Green"/>
-                                                <TextBlock FontSize="12" Text="Yes"/>
-                                            </StackPanel>
-                                        </ComboBoxItem>
-                                        <ComboBoxItem>
-                                            <StackPanel Orientation="Horizontal">
-                                                <Ellipse Width="8" Height="8" Fill="Red"/>
-                                                <TextBlock FontSize="12" Text="No"/>
-                                            </StackPanel>
-                                        </ComboBoxItem>
-                                    </ComboBox>
-                                </Grid>
-                            </Border>
-                            <Grid Grid.Row="3">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock x:Name="skiConstantText" Grid.Column="0" 
-                                           TextAlignment="Left" VerticalAlignment="Center" 
-                                           Margin="5,0,0,0" FontSize="12" 
-                                           Text="Add ski" Height="20"/>
-                                <ComboBox x:Name="cmbx_addSki" Grid.Column="1"
-                                          VerticalAlignment="Center" Margin="10,10,5,10" 
-                                          SelectedIndex="1">
-                                    <ComboBoxItem>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Ellipse Width="8" Height="8" Fill="Green"/>
-                                            <TextBlock FontSize="12" Text="Yes"/>
-                                        </StackPanel>
-                                    </ComboBoxItem>
-                                    <ComboBoxItem>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Ellipse Width="8" Height="8" Fill="Red"/>
-                                            <TextBlock FontSize="12" Text="No"/>
-                                        </StackPanel>
-                                    </ComboBoxItem>
-                                </ComboBox>
-                            </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Background="#FFC4E3FF"/>
+                        <TextBlock VerticalAlignment="Center" TextAlignment="Center"
+                                   Text="Additional options" FontSize="15"/>
+                        <Border Grid.Row="0" BorderThickness="0.5" BorderBrush="Black"/>
+                        <Grid Grid.Row="1" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" TextAlignment="Left" 
+                                       VerticalAlignment="Center" Margin="5,0,0,0"
+                                       FontSize="12" Text="Add helmet" Height="20"/>
+                            <!--Text="{Binding ElementName=cmbx_addHelmet,Path=SelectedItem}"-->
+                            <ComboBox x:Name="cmbx_addHelmet" Grid.Column="1" 
+                                        VerticalAlignment="Center" Margin="10,10,5,10"
+                                        SelectedIndex="1">
+                                <!--ItemsSource="{Binding choiceCollection}"-->
+                                <ComboBoxItem>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Ellipse Width="8" Height="8" Fill="Green"/>
+                                        <TextBlock FontSize="12" Text="Yes"/>
+                                    </StackPanel>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Ellipse Width="8" Height="8" Fill="Red"/>
+                                        <TextBlock FontSize="12" Text="No"/>
+                                    </StackPanel>
+                                </ComboBoxItem>
+                            </ComboBox>
                         </Grid>
-                    </Border>
-                    <Calendar x:Name="orderDate" IsTodayHighlighted="True" 
-                              SelectedDatesChanged="orderDate_SelectedDatesChanged"/>
-                    <TextBlock Margin="10" Grid.Row="1" 
-                               Text="{Binding ElementName=orderDate, Path=SelectedDate}"/>
+                        <Grid Grid.Row="2" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="goggleConstantText" Grid.Column="0" 
+                                         TextAlignment="Left" VerticalAlignment="Center" 
+                                         Margin="5,0,0,0" FontSize="12" 
+                                         Text="Add goggle" Height="20"/>
+                            <ComboBox x:Name="cmbx_addGoggle" Grid.Column="1" 
+                                        VerticalAlignment="Center" Margin="10,10,5,10" 
+                                        SelectedIndex="1">
+                                <ComboBoxItem>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Ellipse Width="8" Height="8" Fill="Green"/>
+                                        <TextBlock FontSize="12" Text="Yes"/>
+                                    </StackPanel>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Ellipse Width="8" Height="8" Fill="Red"/>
+                                        <TextBlock FontSize="12" Text="No"/>
+                                    </StackPanel>
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="skiConstantText" Grid.Column="0" 
+                                         TextAlignment="Left" VerticalAlignment="Center" 
+                                         Margin="5,0,0,0" FontSize="12" 
+                                         Text="Add ski" Height="20"/>
+                            <ComboBox x:Name="cmbx_addSki" Grid.Column="1"
+                                        VerticalAlignment="Center" Margin="10,10,5,10" 
+                                        SelectedIndex="1">
+                                <ComboBoxItem>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Ellipse Width="8" Height="8" Fill="Green"/>
+                                        <TextBlock FontSize="12" Text="Yes"/>
+                                    </StackPanel>
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Ellipse Width="8" Height="8" Fill="Red"/>
+                                        <TextBlock FontSize="12" Text="No"/>
+                                    </StackPanel>
+                                </ComboBoxItem>
+                            </ComboBox>
+                        </Grid>
+                        <Border Grid.Row="1" BorderThickness="0.2" BorderBrush="Black" 
+                                VerticalAlignment="Bottom"/>
+                        <Border Grid.Row="2" BorderThickness="0.2" BorderBrush="Black" 
+                                VerticalAlignment="Bottom"/>
+                    </Grid>
+                    <Border BorderThickness="0.5" BorderBrush="Black" Grid.Row="0" 
+                            Grid.Column="1" VerticalAlignment="Stretch"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                VerticalAlignment="Center" Grid.RowSpan="2">
+                        <StackPanel Orientation="Vertical" Margin="0,0,2,0">
+                            <TextBlock Text="Order date" FontSize="15" Foreground="Green"/>
+                            <Calendar x:Name="cal_orderDate" IsTodayHighlighted="False"
+                                        SelectedDatesChanged="cal_orderDate_SelectedDatesChanged"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Return date" FontSize="15" Foreground="Red"/>
+                            <Calendar x:Name="cal_returnDate" IsTodayHighlighted="False" 
+                                        SelectedDatesChanged="cal_returnDate_SelectedDatesChanged"/>
+                        </StackPanel>
+                    </StackPanel>
                 </Grid>
             </Grid>
 
@@ -168,9 +178,9 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Kit amount" VerticalAlignment="Center" 
-                               HorizontalAlignment="Center" FontSize="13"/>
-                    <TextBox x:Name="txt_kitAmount" Grid.Column="1" Margin="5" FontSize="13"
-                             VerticalAlignment="Center" Background="#FFD4F9FF"/>
+                               HorizontalAlignment="Center" FontSize="14"/>
+                    <TextBox x:Name="txt_kitAmount" Grid.Column="1" Margin="5" FontSize="14"
+                               VerticalAlignment="Center" />
                 </Grid>
                 <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
                     <Grid.ColumnDefinitions>
@@ -178,17 +188,17 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Column="0" Text="Price (1 kit):" FontSize="13" 
+                    <TextBlock Grid.Column="0" Text="Price (1 kit):" FontSize="14" 
                                VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="txt_price" Grid.Column="1" Margin="4" FontSize="13" 
-                             Background="#FFD4F9FF" BorderThickness="0"
-                             FontWeight="Bold" Foreground="#FF3FC700"
-                             Text="{Binding ElementName=slider_kitPrice, Path=Value, 
-                             StringFormat={}{0:0.0}}"/>
+                    <TextBox x:Name="txt_price" Grid.Column="1" Margin="4" FontSize="14" 
+                               Background="#FFD4F9FF" BorderThickness="0"
+                               FontWeight="Bold" Foreground="#FF3FC700"
+                               Text="{Binding ElementName=slider_kitPrice, Path=Value, 
+                               StringFormat={}{0:0.0}}"/>
                 </Grid>
                 <Slider x:Name="slider_kitPrice" Grid.Column="2" VerticalAlignment="Center"
-                        Minimum="20" Maximum="50" Value="35" Cursor="Hand" TickPlacement="None" 
-                        SmallChange="0.1" LargeChange="1" Ticks="1"/>
+                          Minimum="20" Maximum="50" Value="35" Cursor="Hand" TickPlacement="None" 
+                          SmallChange="0.1" LargeChange="1" Ticks="1"/>
             </Grid>
 
             <Grid Grid.Row="2">
@@ -203,10 +213,10 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Name" FontSize="13" 
+                    <TextBlock Grid.Column="0" Text="Name" FontSize="14" 
                                VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="txt_name" Grid.Column="1" Margin="5,8" FontSize="13"
-                             VerticalAlignment="Center"/>
+                    <TextBox x:Name="txt_name" Grid.Column="1" Margin="5,8" FontSize="14"
+                               VerticalAlignment="Center"/>
                     <Border Grid.Column="0" BorderThickness="0.1"
                             BorderBrush="Black" HorizontalAlignment="Right"/>
                     <Border Grid.Column="1" BorderThickness="0.5"
@@ -218,10 +228,10 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Surname" FontSize="13" 
+                    <TextBlock Grid.Column="0" Text="Surname" FontSize="14" 
                                VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                    <TextBox x:Name="txt_surname" Grid.Column="1" Margin="5,8" FontSize="13"
-                             VerticalAlignment="Center"/>
+                    <TextBox x:Name="txt_surname" Grid.Column="1" Margin="5,8" FontSize="14"
+                               VerticalAlignment="Center"/>
                     <Border Grid.Column="0" BorderThickness="0.1"
                             BorderBrush="Black" HorizontalAlignment="Right"/>
                     <Border Grid.Column="1" BorderThickness="0.5"
@@ -229,8 +239,8 @@
                 </Grid>
 
                 <Grid Grid.Column="2">
-                    <Button x:Name="btn_add" Content="Add" FontSize="13" BorderThickness ="0"
-                            Click="btn_add_Click" Background="#FFF0F0F0"/>
+                    <Button x:Name="btn_add" Content="Add" FontSize="14" BorderThickness ="0"
+                              Click="btn_add_Click" Background="#FFD1FFCE"/>
                 </Grid>
             </Grid>
 
